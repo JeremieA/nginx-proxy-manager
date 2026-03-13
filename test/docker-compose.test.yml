@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.custom
+    environment:
+      DEBUG: "true"
+      CI: "true"
+    volumes:
+      - data:/data
+      - letsencrypt:/etc/letsencrypt
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:81/api/"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    networks:
+      default:
+        aliases:
+          - fullstack
+
+  cypress:
+    build:
+      context: ../
+      dockerfile: test/cypress/Dockerfile
+    volumes:
+      - data:/data
+      - letsencrypt:/etc/letsencrypt
+    depends_on:
+      app:
+        condition: service_healthy
+    command: cypress run --browser chrome --config-file=cypress/config/ci.mjs --spec cypress/e2e/api/CertificatesDnsEdit.cy.js
+
+volumes:
+  data:
+  letsencrypt:

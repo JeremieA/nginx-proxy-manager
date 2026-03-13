@@ -107,6 +107,8 @@ services:
       HTTPS_PROXY: "squid:3128"
     volumes:
       - "cypress_logs:/test/results"
+      - "npm_data_ci:/data"
+      - "npm_le_ci:/etc/letsencrypt"
       - "./dev/resolv.conf:/etc/resolv.conf:ro"
       - "/etc/localtime:/etc/localtime:ro"
     command: cypress run --browser chrome --config-file=cypress/config/ci.mjs
