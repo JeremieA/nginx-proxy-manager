@@ -282,6 +282,13 @@ const internalCertificate = {
 			.patchAndFetchById(row.id, patchPayload)
 			.then(utils.omitRow(omissions()));
 
+		// Sync credentials file to disk so certbot uses the updated value on renewal
+		if (isLetsEncryptDns && patchPayload.meta.dns_provider_credentials) {
+			const credentialsLocation = `/etc/letsencrypt/credentials/credentials-${row.id}`;
+			fs.mkdirSync("/etc/letsencrypt/credentials", { recursive: true });
+			fs.writeFileSync(credentialsLocation, patchPayload.meta.dns_provider_credentials, { mode: 0o600 });
+		}
+
 		savedRow.meta = internalCertificate.cleanMeta(savedRow.meta);
 		data.meta = internalCertificate.cleanMeta(patchPayload.meta);
 
