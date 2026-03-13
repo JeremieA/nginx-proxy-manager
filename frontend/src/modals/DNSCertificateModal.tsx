@@ -82,8 +82,8 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 			<Modal show={visible} onHide={remove}>
 				<Formik
 					initialValues={getInitialValues(certificate) as any}
-					onSubmit={onSubmit}
 					enableReinitialize={isEdit}
+					onSubmit={onSubmit}
 				>
 				{() => (
 					<Form>

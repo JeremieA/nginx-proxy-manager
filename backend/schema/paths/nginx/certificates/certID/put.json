@@ -21,17 +21,19 @@
 		}
 	],
 	"requestBody": {
-		"description": "Certificate update payload (DNS provider and credentials for Let's Encrypt DNS certificates)",
+		"description": "Certificate update payload",
 		"required": true,
 		"content": {
 			"application/json": {
 				"schema": {
 					"type": "object",
+					"required": ["meta"],
 					"additionalProperties": false,
 					"properties": {
 						"meta": {
 							"type": "object",
 							"additionalProperties": false,
+							"minProperties": 1,
 							"properties": {
 								"dns_provider": {
 									"type": "string"
