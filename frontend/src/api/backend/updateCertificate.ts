@@ -2,7 +2,7 @@ import * as api from "./base";
 import type { Certificate } from "./models";
 
 export interface UpdateCertificatePayload {
-	meta?: {
+	meta: {
 		dnsProvider?: string;
 		dnsProviderCredentials?: string;
 		propagationSeconds?: number;

@@ -244,11 +244,10 @@ router
 	/**
 	 * PUT /api/nginx/certificates/123
 	 *
-	 * Update an existing certificate (e.g. DNS provider API credentials for Let's Encrypt)
+	 * Update an existing certificate (e.g. DNS provider credentials for Let's Encrypt)
 	 */
 	.put(async (req, res, next) => {
 		try {
-			req.setTimeout(900000); // 15 minutes (update may run certbot renew)
 			const certificateId = Number.parseInt(req.params.certificate_id, 10);
 			const payload = await apiValidator(
 				getValidationSchema("/nginx/certificates/{certID}", "put"),

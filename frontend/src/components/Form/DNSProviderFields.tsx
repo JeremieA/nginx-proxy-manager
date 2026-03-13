@@ -42,7 +42,7 @@ export function DNSProviderFields({ showBoundaryBox = false, editMode = false }:
 	const selectedOption = options.find((o) => o.value === v.meta?.dnsProvider) ?? null;
 	const showCredentials = dnsProviderId ?? v.meta?.dnsProvider;
 
-	// When a provider is selected and credentials are empty, use the template from dns-plugins.json as the value
+	// When a provider is selected and credentials are empty, use the template from dns-plugins.json
 	useEffect(() => {
 		if (selectedOption && (v.meta?.dnsProviderCredentials ?? "") === "") {
 			setFieldValue("meta.dnsProviderCredentials", selectedOption.credentials);
