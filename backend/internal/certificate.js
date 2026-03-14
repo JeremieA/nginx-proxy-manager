@@ -986,7 +986,7 @@ const internalCertificate = {
 		args.push(...adds.args);
 
 		logger.info(`Command: ${certbotCommand} ${args ? args.join(" ") : ""}`);
-  
+
 		const result = await utils.execFile(certbotCommand, args, adds.opts);
 		logger.info(result);
 		return result;
