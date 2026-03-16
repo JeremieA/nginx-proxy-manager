@@ -185,6 +185,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Tento doplnok vyžaduje konfiguračný súbor obsahujúci API token alebo iné prihlasovacie údaje vášho poskytovateľa"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Nahradiť vo všetkých certifikátoch používajúcich rovnaké prihlasovacie údaje"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Aktualizovať všetky ostatné DNS certifikáty, ktoré používajú rovnaké prihlasovacie údaje poskytovateľa."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nový obsah súboru s prihlasovacími údajmi (nahradí existujúci)"
 	},
@@ -199,6 +205,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS poskytovateľ"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Overiť (obnoviť teraz)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Okamžite obnoviť certifikát na overenie, či nové prihlasovacie údaje fungujú. Toto môže trvať niekoľko minút."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Vyberte poskytovateľa..."

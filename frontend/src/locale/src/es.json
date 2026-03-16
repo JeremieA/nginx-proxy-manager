@@ -128,6 +128,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Este plugin requiere un archivo de configuración que contenga un token de API u otras credenciales para tu proveedor"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Reemplazar en todos los certificados que usan las mismas credenciales"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Actualizar todos los demás certificados DNS que usan las mismas credenciales del proveedor."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nuevo contenido del archivo de credenciales (reemplaza el existente)"
 	},
@@ -142,6 +148,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "Proveedor DNS"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Validar (renovar ahora)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Renovar inmediatamente el certificado para verificar que las nuevas credenciales funcionan. Esto puede tardar varios minutos."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Selecciona un Proveedor..."

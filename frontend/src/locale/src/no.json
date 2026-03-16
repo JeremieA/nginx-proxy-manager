@@ -185,6 +185,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Denne pluginen krever en konfigurasjonsfil som inneholder en API-token eller andre legitimasjoner for leverandøren din"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Erstatt i alle sertifikater som bruker samme legitimasjon"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Oppdater alle andre DNS-sertifikater som bruker samme leverandørlegitimasjon."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nytt innhold for legitimasjonsfil (erstatter eksisterende)"
 	},
@@ -199,6 +205,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS-leverandør"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Valider (forny nå)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Forny sertifikatet umiddelbart for å bekrefte at de nye legitimasjonene fungerer. Dette kan ta flere minutter."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Velg en leverandør..."

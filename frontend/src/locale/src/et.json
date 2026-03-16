@@ -185,6 +185,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "This plugin requires a configuration file containing an API token or other credentials for your provider"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Asenda kõigis samade mandaatidega sertifikaatides"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Uuenda kõiki teisi DNS-sertifikaate, mis kasutavad samu teenusepakkuja mandaate."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "New Credentials File Content (replaces existing)"
 	},
@@ -199,6 +205,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS Provider"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Kinnita (uuenda kohe)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Uuenda sertifikaat kohe, et kontrollida, kas uued mandaadid toimivad. See võib võtta mitu minutit."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Select a Provider..."

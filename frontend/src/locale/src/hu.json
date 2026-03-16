@@ -185,6 +185,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Ez a plugin egy konfigurációs fájlt igényel, amely API tokent vagy egyéb hitelesítő adatokat tartalmaz a szolgáltatóhoz"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Csere az összes azonos hitelesítő adatokat használó tanúsítványban"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Az összes többi, azonos szolgáltatói hitelesítő adatokat használó DNS-tanúsítvány frissítése."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Új hitelesítő adatok fájltartalma (lecseréli a meglévőt)"
 	},
@@ -199,6 +205,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS szolgáltató"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Ellenőrzés (megújítás most)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "A tanúsítvány azonnali megújítása annak ellenőrzésére, hogy az új hitelesítő adatok működnek. Ez néhány percig tarthat."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Válasszon szolgáltatót..."

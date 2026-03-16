@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Dieses Plugin erfordert eine Konfigurationsdatei, die einen API-Token oder andere Anmeldedaten für Ihren Anbieter enthält."
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "In allen Zertifikaten mit denselben Anmeldedaten ersetzen"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Alle anderen DNS-Zertifikate aktualisieren, die dieselben Anbieter-Anmeldedaten verwenden."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Neuer Inhalt der Anmeldedaten-Datei (ersetzt die bestehende)"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS Provider"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Überprüfen (jetzt erneuern)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Das Zertifikat sofort erneuern, um zu überprüfen, ob die neuen Anmeldedaten funktionieren. Dies kann einige Minuten dauern."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Dieser Abschnitt erfordert einige Kenntnisse über Certbot und seine DNS-Plugins. Bitte konsultieren Sie die jeweilige Plugin-Dokumentation."

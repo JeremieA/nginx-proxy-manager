@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Ce plugin nécessite un fichier de configuration contenant un jeton d'API ou d'autres informations d'identification pour votre fournisseur."
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Remplacer dans tous les certificats utilisant les mêmes identifiants"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Mettre à jour tous les autres certificats DNS qui utilisent les mêmes identifiants de fournisseur."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nouveau contenu du fichier d'identifiants (remplace l'existant)"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "Fournisseur DNS"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Valider (renouveler maintenant)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Renouveler immédiatement le certificat pour vérifier que les nouveaux identifiants fonctionnent. Cela peut prendre plusieurs minutes."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Cette section requiert une certaine connaissance de Certbot et de ses plugins DNS. Veuillez consulter la documentation des plugins correspondants."
