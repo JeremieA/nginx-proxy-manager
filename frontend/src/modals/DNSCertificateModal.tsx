@@ -86,7 +86,8 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 					});
 					const batchUpdated = (result as any).batchResults?.updated?.length ?? 0;
 					if (batchUpdated > 0) {
-						showSuccess(`Certificate saved. ${batchUpdated} other certificate${batchUpdated > 1 ? "s" : ""} also updated.`);
+						const total = batchUpdated + 1;
+						showSuccess(`${total} certificate${total > 1 ? "s" : ""} updated.`);
 					} else {
 						showObjectSuccess("certificate", "saved");
 					}
