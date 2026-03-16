@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "更新所有使用相同提供商凭证的其他 DNS 证书。"
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "已在 {count} 个证书中更新了 DNS 凭证。"
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "新凭证文件内容（将替换现有内容）"
 	},

@@ -128,6 +128,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Zaktualizuj wszystkie inne certyfikaty DNS, które używają tych samych poświadczeń dostawcy."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Poświadczenia DNS zostały zaktualizowane dla {count} certyfikatów."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nowa zawartość pliku poświadczeń (zastępuje istniejącą)"
 	},

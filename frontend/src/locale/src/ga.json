@@ -134,6 +134,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Nuashonraigh gach teastas DNS eile a úsáideann na dintiúir soláthraí chéanna."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Nuashonraíodh dintiúir DNS ar fud {count} teastas."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Cuid nua an chomhaid dintiúir (ionann agus an ceann atá ann)"
 	},

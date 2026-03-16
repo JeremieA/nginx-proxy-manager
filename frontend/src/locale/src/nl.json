@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Alle andere DNS-certificaten bijwerken die dezelfde provider-inloggegevens gebruiken."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "DNS-inloggegevens bijgewerkt voor {count} certificaten."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nieuwe inhoud van het bestand met inloggegevens (vervangt bestaande)"
 	},

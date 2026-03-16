@@ -10,6 +10,7 @@ import { getBatchReplaceCount } from "src/api/backend/updateCertificate";
 import { Button, DNSProviderFields, DomainNamesField } from "src/components";
 import { T } from "src/locale";
 import { showObjectSuccess, showSuccess } from "src/notifications";
+import { intl } from "src/locale";
 
 export interface DNSCertificateModalProps {
 	certificate?: Certificate;
@@ -87,7 +88,7 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 					const batchUpdated = (result as any).batchResults?.updated?.length ?? 0;
 					if (batchUpdated > 0) {
 						const total = batchUpdated + 1;
-						showSuccess(`${total} certificate${total > 1 ? "s" : ""} updated.`);
+						showSuccess(intl.formatMessage({ id: "certificates.dns.batch-replace-success" }, { count: total }));
 					} else {
 						showObjectSuccess("certificate", "saved");
 					}

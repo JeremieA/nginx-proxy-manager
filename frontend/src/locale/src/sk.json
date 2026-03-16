@@ -191,6 +191,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Aktualizovať všetky ostatné DNS certifikáty, ktoré používajú rovnaké prihlasovacie údaje poskytovateľa."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Prihlasovacie údaje DNS boli aktualizované pre {count} certifikátov."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nový obsah súboru s prihlasovacími údajmi (nahradí existujúci)"
 	},

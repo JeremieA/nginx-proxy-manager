@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Cập nhật tất cả các chứng chỉ DNS khác sử dụng cùng thông tin xác thực nhà cung cấp."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Thông tin xác thực DNS đã được cập nhật cho {count} chứng chỉ."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nội dung file thông tin xác thực mới (thay thế nội dung hiện có)"
 	},

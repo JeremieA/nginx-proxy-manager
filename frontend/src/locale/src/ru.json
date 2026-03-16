@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Обновить все остальные DNS-сертификаты, использующие те же учётные данные провайдера."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Учётные данные DNS обновлены для {count} сертификатов."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Новое содержимое файла учётных данных (заменяет существующее)"
 	},

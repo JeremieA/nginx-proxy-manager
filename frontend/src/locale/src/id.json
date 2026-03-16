@@ -134,6 +134,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Perbarui semua sertifikat DNS lain yang menggunakan kredensial penyedia yang sama."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Kredensial DNS diperbarui pada {count} sertifikat."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Konten file kredensial baru (menggantikan yang ada)"
 	},
