@@ -280,6 +280,15 @@ const internalCertificate = {
 			}
 			if (data.meta.dns_provider !== undefined) mergedMeta.dns_provider = data.meta.dns_provider;
 			if (data.meta.dns_provider_credentials !== undefined) {
+				// Reject if the submitted credentials match the provider's template
+				// (user clicked Save without replacing the placeholder values).
+				// Compare whitespace-insensitively, as the user may have edited
+				// formatting without changing the actual placeholder values.
+				const providerId = data.meta.dns_provider || mergedMeta.dns_provider;
+				const template = dnsPlugins[providerId]?.credentials;
+				if (template && data.meta.dns_provider_credentials.replace(/\s/g, "") === template.replace(/\s/g, "")) {
+					throw new error.ValidationError("Credentials match the template — please replace the placeholder values with your actual credentials.");
+				}
 				mergedMeta.dns_provider_credentials = data.meta.dns_provider_credentials;
 			}
 			if (data.meta.propagation_seconds !== undefined) {
