@@ -134,6 +134,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Обновяване на всички други DNS сертификати, които използват същите идентификационни данни на доставчика."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "DNS идентификационните данни бяха актуализирани за {count} сертификата."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Ново съдържание на файл с идентификационни данни (заменя съществуващото)"
 	},

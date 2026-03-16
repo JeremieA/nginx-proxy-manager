@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "同じプロバイダー認証情報を使用する他のすべてのDNS証明書を更新します。"
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "{count} 件の証明書でDNS認証情報が更新されました。"
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "新しい認証情報ファイルの内容（既存のものを置き換えます）"
 	},

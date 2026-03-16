@@ -191,6 +191,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Uuenda kõiki teisi DNS-sertifikaate, mis kasutavad samu teenusepakkuja mandaate."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "DNS-mandaadid uuendati {count} sertifikaadi jaoks."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "New Credentials File Content (replaces existing)"
 	},

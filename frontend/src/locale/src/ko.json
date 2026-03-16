@@ -134,6 +134,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "동일한 공급자 자격 증명을 사용하는 다른 모든 DNS 인증서를 업데이트합니다."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "{count}개의 인증서에서 DNS 자격 증명이 업데이트되었습니다."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "새 자격 증명 파일 내용(기존 항목 대체)"
 	},

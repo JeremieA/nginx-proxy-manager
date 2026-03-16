@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Aggiorna tutti gli altri certificati DNS che utilizzano le stesse credenziali del provider."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "Le credenziali DNS sono state aggiornate per {count} certificati."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nuovo contenuto del file credenziali (sostituisce l'esistente)"
 	},

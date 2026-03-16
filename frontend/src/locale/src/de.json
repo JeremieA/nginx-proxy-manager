@@ -122,6 +122,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Alle anderen DNS-Zertifikate aktualisieren, die dieselben Anbieter-Anmeldedaten verwenden."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "DNS-Anmeldedaten wurden für {count} Zertifikate aktualisiert."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Neuer Inhalt der Anmeldedaten-Datei (ersetzt die bestehende)"
 	},

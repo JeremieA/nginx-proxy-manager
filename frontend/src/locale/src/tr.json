@@ -134,6 +134,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Aynı sağlayıcı kimlik bilgilerini kullanan diğer tüm DNS sertifikalarını güncelle."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "DNS kimlik bilgileri {count} sertifikada güncellendi."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Yeni kimlik bilgileri dosyası içeriği (mevcut olanın yerini alır)"
 	},

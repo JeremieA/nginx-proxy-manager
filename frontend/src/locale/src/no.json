@@ -191,6 +191,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Oppdater alle andre DNS-sertifikater som bruker samme leverandørlegitimasjon."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "DNS-legitimasjon ble oppdatert for {count} sertifikater."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nytt innhold for legitimasjonsfil (erstatter eksisterende)"
 	},

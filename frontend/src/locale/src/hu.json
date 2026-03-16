@@ -191,6 +191,9 @@
 	"certificates.dns.batch-replace-note": {
 		"defaultMessage": "Az összes többi, azonos szolgáltatói hitelesítő adatokat használó DNS-tanúsítvány frissítése."
 	},
+	"certificates.dns.batch-replace-success": {
+		"defaultMessage": "A DNS hitelesítő adatok frissítve lettek {count} tanúsítványnál."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Új hitelesítő adatok fájltartalma (lecseréli a meglévőt)"
 	},
