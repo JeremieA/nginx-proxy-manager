@@ -9,7 +9,7 @@ import { createCertificate, updateCertificate } from "src/api/backend";
 import { getBatchReplaceCount } from "src/api/backend/updateCertificate";
 import { Button, DNSProviderFields, DomainNamesField } from "src/components";
 import { T } from "src/locale";
-import { showObjectSuccess } from "src/notifications";
+import { showObjectSuccess, showSuccess } from "src/notifications";
 
 export interface DNSCertificateModalProps {
 	certificate?: Certificate;
@@ -75,7 +75,7 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 
 			try {
 				if (isEdit && values.id) {
-					await updateCertificate(values.id, {
+					const result = await updateCertificate(values.id, {
 						meta: {
 							dnsProvider: values.meta?.dnsProvider,
 							dnsProviderCredentials: values.meta?.dnsProviderCredentials,
@@ -84,10 +84,16 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 						validate: validate || undefined,
 						batchReplace: batchReplace || undefined,
 					});
+					const batchUpdated = (result as any).batchResults?.updated?.length ?? 0;
+					if (batchUpdated > 0) {
+						showSuccess(`Certificate saved. ${batchUpdated} other certificate${batchUpdated > 1 ? "s" : ""} also updated.`);
+					} else {
+						showObjectSuccess("certificate", "saved");
+					}
 				} else {
 					await createCertificate(values);
+					showObjectSuccess("certificate", "saved");
 				}
-				showObjectSuccess("certificate", "saved");
 				remove();
 			} catch (err: any) {
 				setErrorMsg(<T id={err.message} />);
