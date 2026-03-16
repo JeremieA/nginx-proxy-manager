@@ -253,9 +253,14 @@ router
 				getValidationSchema("/nginx/certificates/{certID}", "put"),
 				req.body,
 			);
+			if (payload.validate) {
+				req.setTimeout(900000); // 15 minutes (validate runs certbot renew)
+			}
 			const result = await internalCertificate.update(res.locals.access, {
 				id: certificateId,
 				meta: payload.meta,
+				validate: payload.validate || false,
+				batch_replace: payload.batch_replace || false,
 			});
 			res.status(200).send(result);
 		} catch (err) {
@@ -339,6 +344,36 @@ router
 			const result = await internalCertificate.renew(res.locals.access, {
 				id: Number.parseInt(req.params.certificate_id, 10),
 			});
+			res.status(200).send(result);
+		} catch (err) {
+			debug(logger, `${req.method.toUpperCase()} ${req.path}: ${err}`);
+			next(err);
+		}
+	});
+
+/**
+ * Batch count for DNS credential replacement
+ *
+ * /api/nginx/certificates/123/batch-count
+ */
+router
+	.route("/:certificate_id/batch-count")
+	.options((_, res) => {
+		res.sendStatus(204);
+	})
+	.all(jwtdecode())
+
+	/**
+	 * GET /api/nginx/certificates/123/batch-count
+	 *
+	 * Count other certificates sharing the same DNS credentials
+	 */
+	.get(async (req, res, next) => {
+		try {
+			const result = await internalCertificate.getBatchCount(
+				res.locals.access,
+				{ id: Number.parseInt(req.params.certificate_id, 10) },
+			);
 			res.status(200).send(result);
 		} catch (err) {
 			debug(logger, `${req.method.toUpperCase()} ${req.path}: ${err}`);

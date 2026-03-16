@@ -1,11 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query";
 import EasyModal, { type InnerModalProps } from "ez-modal-react";
 import { Form, Formik, Field } from "formik";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useCallback, useState } from "react";
 import { Alert } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import type { Certificate } from "src/api/backend";
 import { createCertificate, updateCertificate } from "src/api/backend";
+import { getBatchReplaceCount } from "src/api/backend/updateCertificate";
 import { Button, DNSProviderFields, DomainNamesField } from "src/components";
 import { T } from "src/locale";
 import { showObjectSuccess } from "src/notifications";
@@ -50,6 +51,22 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 		const [errorMsg, setErrorMsg] = useState<ReactNode | null>(null);
 		const [isSubmitting, setIsSubmitting] = useState(false);
 		const isEdit = Boolean(certificate?.id);
+		const [validate, setValidate] = useState(isEdit);
+		const [batchReplace, setBatchReplace] = useState(false);
+		const [batchCount, setBatchCount] = useState<number | null>(null);
+
+		const handleBatchToggle = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+			const checked = e.target.checked;
+			setBatchReplace(checked);
+			if (checked && batchCount === null && certificate?.id) {
+				try {
+					const result = await getBatchReplaceCount(certificate.id);
+					setBatchCount(result.count);
+				} catch {
+					setBatchCount(0);
+				}
+			}
+		}, [batchCount, certificate?.id]);
 
 		const onSubmit = async (values: any, { setSubmitting }: any) => {
 			if (isSubmitting) return;
@@ -64,6 +81,8 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 							dnsProviderCredentials: values.meta?.dnsProviderCredentials,
 							propagationSeconds: values.meta?.propagationSeconds,
 						},
+						validate: validate || undefined,
+						batchReplace: batchReplace || undefined,
 					});
 				} else {
 					await createCertificate(values);
@@ -128,6 +147,43 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 										</>
 									)}
 									<DNSProviderFields editMode={isEdit} />
+									{isEdit && (
+										<div className="mt-3 border-top pt-3">
+											<div className="form-check mb-2">
+												<input
+													type="checkbox"
+													className="form-check-input"
+													id="validateCheckbox"
+													checked={validate}
+													onChange={(e) => setValidate(e.target.checked)}
+												/>
+												<label className="form-check-label" htmlFor="validateCheckbox">
+													<T id="certificates.dns.validate-renew" />
+												</label>
+												<small className="text-muted d-block">
+													<T id="certificates.dns.validate-renew-note" />
+												</small>
+											</div>
+											<div className="form-check">
+												<input
+													type="checkbox"
+													className="form-check-input"
+													id="batchReplaceCheckbox"
+													checked={batchReplace}
+													onChange={handleBatchToggle}
+												/>
+												<label className="form-check-label" htmlFor="batchReplaceCheckbox">
+													<T id="certificates.dns.batch-replace" />
+													{batchCount !== null && batchCount > 0 && (
+														<span className="badge bg-secondary ms-1">{batchCount}</span>
+													)}
+												</label>
+												<small className="text-muted d-block">
+													<T id="certificates.dns.batch-replace-note" />
+												</small>
+											</div>
+										</div>
+									)}
 								</div>
 							</div>
 						</Modal.Body>

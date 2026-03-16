@@ -7,6 +7,8 @@ export interface UpdateCertificatePayload {
 		dnsProviderCredentials?: string;
 		propagationSeconds?: number;
 	};
+	validate?: boolean;
+	batchReplace?: boolean;
 }
 
 export async function updateCertificate(
@@ -17,4 +19,10 @@ export async function updateCertificate(
 		url: `/nginx/certificates/${id}`,
 		data: payload,
 	});
+}
+
+export async function getBatchReplaceCount(
+	id: number,
+): Promise<{ count: number }> {
+	return await api.get({ url: `/nginx/certificates/${id}/batch-count` });
 }
