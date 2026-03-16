@@ -132,7 +132,7 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 										</label>
 										<div>
 											{certificate.domainNames.map((d: string) => (
-												<span key={d} className="badge bg-azure me-1 mb-1">{d}</span>
+												<span key={d} className="badge bg-blue-lt me-1 mb-1">{d}</span>
 											))}
 										</div>
 									</div>
