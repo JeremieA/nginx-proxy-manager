@@ -128,6 +128,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Този плъгин изисква конфигурационен файл с API токен или други идентификационни данни."
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Замяна във всички сертификати, използващи същите идентификационни данни"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Обновяване на всички други DNS сертификати, които използват същите идентификационни данни на доставчика."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Ново съдържание на файл с идентификационни данни (заменя съществуващото)"
 	},
@@ -142,6 +148,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS доставчик"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Проверка (подновяване сега)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Незабавно подновяване на сертификата, за да се провери дали новите идентификационни данни работят. Това може да отнеме няколко минути."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Изберете доставчик..."

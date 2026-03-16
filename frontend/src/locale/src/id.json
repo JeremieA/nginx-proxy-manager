@@ -128,6 +128,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Plugin ini memerlukan file konfigurasi yang berisi token API atau kredensial lain untuk penyedia Anda"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Ganti di semua sertifikat yang menggunakan kredensial yang sama"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Perbarui semua sertifikat DNS lain yang menggunakan kredensial penyedia yang sama."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Konten file kredensial baru (menggantikan yang ada)"
 	},
@@ -142,6 +148,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "Penyedia DNS"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Validasi (perbarui sekarang)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Segera perbarui sertifikat untuk memverifikasi bahwa kredensial baru berfungsi. Ini mungkin memerlukan beberapa menit."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Pilih Penyedia..."

@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "此插件需要一个包含 API 令牌或提供商其他凭证的配置文件"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "替换所有使用相同凭证的证书"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "更新所有使用相同提供商凭证的其他 DNS 证书。"
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "新凭证文件内容（将替换现有内容）"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS 提供商"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "验证（立即续期）"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "立即续期证书以验证新凭证是否有效。此操作可能需要几分钟。"
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "本节需要您具备一些关于 Certbot 及其 DNS 插件的知识，请参阅相应插件的官方文档。"

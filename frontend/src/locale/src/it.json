@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Questo plugin richiede un file di configurazione contenente un token API o altre credenziali per il tuo provider"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Sostituisci in tutti i certificati che usano le stesse credenziali"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Aggiorna tutti gli altri certificati DNS che utilizzano le stesse credenziali del provider."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nuovo contenuto del file credenziali (sostituisce l'esistente)"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "Provider DNS"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Verifica (rinnova ora)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Rinnova immediatamente il certificato per verificare che le nuove credenziali funzionino. Questa operazione potrebbe richiedere alcuni minuti."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Questa sezione richiede conoscenze su Certbot e i relativi plugin DNS. Consulta la documentazione del plugin."

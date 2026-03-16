@@ -128,6 +128,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Bu eklenti, sağlayıcınız için bir API token'ı veya diğer kimlik bilgilerini içeren bir yapılandırma dosyası gerektirir"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Aynı kimlik bilgilerini kullanan tüm sertifikalarda değiştir"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Aynı sağlayıcı kimlik bilgilerini kullanan diğer tüm DNS sertifikalarını güncelle."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Yeni kimlik bilgileri dosyası içeriği (mevcut olanın yerini alır)"
 	},
@@ -142,6 +148,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS Sağlayıcı"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Doğrula (şimdi yenile)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Yeni kimlik bilgilerinin çalıştığını doğrulamak için sertifikayı hemen yenileyin. Bu işlem birkaç dakika sürebilir."
 	},
 	"certificates.dns.provider.placeholder": {
 		"defaultMessage": "Bir Sağlayıcı Seçin..."

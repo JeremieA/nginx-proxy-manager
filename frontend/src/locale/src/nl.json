@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Deze plugin vereist een configuratiebestand met een API token of andere gegevens van de provider."
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Vervangen in alle certificaten met dezelfde inloggegevens"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Alle andere DNS-certificaten bijwerken die dezelfde provider-inloggegevens gebruiken."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nieuwe inhoud van het bestand met inloggegevens (vervangt bestaande)"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS Provider"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Valideren (nu vernieuwen)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Vernieuw het certificaat onmiddellijk om te controleren of de nieuwe inloggegevens werken. Dit kan enkele minuten duren."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Deze sectie vereist wat informatie over Certbot en zijn DNS plugins. Gebruik de documentatie van de bijbehorende plugins."

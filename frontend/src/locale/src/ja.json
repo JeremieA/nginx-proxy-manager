@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "このプラグインはプロバイダーのAPIキーか認証情報を含む設定ファイルが必要です"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "同じ認証情報を使用するすべての証明書で置換"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "同じプロバイダー認証情報を使用する他のすべてのDNS証明書を更新します。"
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "新しい認証情報ファイルの内容（既存のものを置き換えます）"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNSプロバイダー"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "検証（今すぐ更新）"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "新しい認証情報が正しく動作するか確認するため、証明書を直ちに更新します。数分かかる場合があります。"
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "このセクションはCertbotとそのDNSプラグインの知識が必要です。各プラグインのドキュメントを参照してください。"

@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Plugin này yêu cầu tệp cấu hình chứa mã thông báo API hoặc thông tin xác thực khác cho nhà cung cấp của bạn"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Thay thế trong tất cả chứng chỉ sử dụng cùng thông tin xác thực"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Cập nhật tất cả các chứng chỉ DNS khác sử dụng cùng thông tin xác thực nhà cung cấp."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nội dung file thông tin xác thực mới (thay thế nội dung hiện có)"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "Nhà cung cấp DNS"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Xác thực (gia hạn ngay)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Gia hạn chứng chỉ ngay lập tức để xác minh thông tin xác thực mới hoạt động. Quá trình này có thể mất vài phút."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Phần này yêu cầu một số kiến thức về Certbot và các plugin DNS của nó. Vui lòng tham khảo tài liệu plugin tương ứng."

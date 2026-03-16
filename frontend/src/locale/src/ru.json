@@ -116,6 +116,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Этот плагин требует файл конфигурации, содержащий API-токен или другие учётные данные вашего провайдера"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Заменить во всех сертификатах с такими же учётными данными"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Обновить все остальные DNS-сертификаты, использующие те же учётные данные провайдера."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Новое содержимое файла учётных данных (заменяет существующее)"
 	},
@@ -130,6 +136,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "DNS-провайдер"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Проверить (обновить сейчас)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Немедленно обновить сертификат, чтобы проверить работоспособность новых учётных данных. Это может занять несколько минут."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Этот раздел требует знаний о Certbot и его DNS-плагинах. Пожалуйста, обратитесь к документации соответствующих плагинов."

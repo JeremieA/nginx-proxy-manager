@@ -122,6 +122,12 @@
 	"certificates.dns.credentials-note": {
 		"defaultMessage": "Ta wtyczka wymaga pliku konfiguracyjnego zawierającego token API lub inne poświadczenia dla twojego dostawcy"
 	},
+	"certificates.dns.batch-replace": {
+		"defaultMessage": "Zastąp we wszystkich certyfikatach używających tych samych poświadczeń"
+	},
+	"certificates.dns.batch-replace-note": {
+		"defaultMessage": "Zaktualizuj wszystkie inne certyfikaty DNS, które używają tych samych poświadczeń dostawcy."
+	},
 	"certificates.dns.credentials-update": {
 		"defaultMessage": "Nowa zawartość pliku poświadczeń (zastępuje istniejącą)"
 	},
@@ -136,6 +142,12 @@
 	},
 	"certificates.dns.provider": {
 		"defaultMessage": "Dostawca DNS"
+	},
+	"certificates.dns.validate-renew": {
+		"defaultMessage": "Sprawdź (odnów teraz)"
+	},
+	"certificates.dns.validate-renew-note": {
+		"defaultMessage": "Natychmiast odnów certyfikat, aby sprawdzić, czy nowe poświadczenia działają. Może to potrwać kilka minut."
 	},
 	"certificates.dns.warning": {
 		"defaultMessage": "Ta sekcja wymaga pewnej wiedzy na temat Certbot i jego wtyczek DNS. Zapoznaj się z dokumentacją odpowiednich wtyczek."
