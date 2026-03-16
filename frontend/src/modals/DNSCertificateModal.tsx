@@ -181,7 +181,7 @@ const DNSCertificateModal = EasyModal.create(({ visible, remove, certificate }: 
 												<label className="form-check-label" htmlFor="batchReplaceCheckbox">
 													<T id="certificates.dns.batch-replace" />
 													{batchCount !== null && batchCount > 0 && (
-														<span className="badge bg-secondary ms-1">{batchCount}</span>
+														<span className="badge bg-pink ms-1">{batchCount}</span>
 													)}
 												</label>
 												<small className="text-muted d-block">
