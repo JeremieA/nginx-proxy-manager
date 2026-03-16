@@ -402,7 +402,7 @@ const internalCertificate = {
 		if (!oldCreds) return { count: 0 };
 
 		const matching = await internalCertificate.findCertsWithMatchingCredentials(oldCreds, data.id);
-		return { count: matching.length };
+		return { count: matching.length + 1 }; // +1 includes the current certificate
 	},
 
 	/**
