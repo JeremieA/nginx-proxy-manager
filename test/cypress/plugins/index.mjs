@@ -54,6 +54,16 @@ export default (on, config) => {
 		},
 
 		/**
+		 * Get the raw meta JSON for a certificate (including credentials).
+		 */
+		dbGetCertificateMeta(id) {
+			const db = new Database(dbPath);
+			const row = db.prepare("SELECT meta FROM certificate WHERE id = ?").get(id);
+			db.close();
+			return row ? JSON.parse(row.meta) : null;
+		},
+
+		/**
 		 * Delete a certificate row by id.
 		 */
 		dbDeleteCertificate(id) {

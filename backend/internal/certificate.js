@@ -255,7 +255,9 @@ const internalCertificate = {
 			);
 		}
 
-		let patchPayload = data;
+		// Strip request-only flags that are not DB columns
+		const { validate, batch_replace, ...dbData } = data;
+		let patchPayload = dbData;
 
 		// Let's Encrypt DNS: allow updating dns_provider, dns_provider_credentials, propagation_seconds
 		const isLetsEncryptDns =
@@ -265,8 +267,17 @@ const internalCertificate = {
 			data.meta &&
 			typeof data.meta === "object";
 
+		// Capture old meta (including credentials) before patching, for rollback and batch matching
+		let oldMeta = null;
 		if (isLetsEncryptDns) {
+			const rawRow = await certificateModel.query().where("id", row.id).first();
+			oldMeta = rawRow ? { ...rawRow.meta } : null;
+
 			const mergedMeta = { ...row.meta };
+			// Restore credentials from raw row since get() omits them
+			if (oldMeta) {
+				mergedMeta.dns_provider_credentials = oldMeta.dns_provider_credentials;
+			}
 			if (data.meta.dns_provider !== undefined) mergedMeta.dns_provider = data.meta.dns_provider;
 			if (data.meta.dns_provider_credentials !== undefined) {
 				mergedMeta.dns_provider_credentials = data.meta.dns_provider_credentials;
@@ -274,19 +285,51 @@ const internalCertificate = {
 			if (data.meta.propagation_seconds !== undefined) {
 				mergedMeta.propagation_seconds = data.meta.propagation_seconds;
 			}
-			patchPayload = { ...data, meta: mergedMeta };
+			patchPayload = { ...dbData, meta: mergedMeta };
 		}
 
-		const savedRow = await certificateModel
+		let savedRow = await certificateModel
 			.query()
 			.patchAndFetchById(row.id, patchPayload)
 			.then(utils.omitRow(omissions()));
 
 		// Sync credentials file to disk so certbot uses the updated value on renewal
+		const credentialsLocation = `/etc/letsencrypt/credentials/credentials-${row.id}`;
 		if (isLetsEncryptDns && patchPayload.meta.dns_provider_credentials) {
-			const credentialsLocation = `/etc/letsencrypt/credentials/credentials-${row.id}`;
 			fs.mkdirSync("/etc/letsencrypt/credentials", { recursive: true });
 			fs.writeFileSync(credentialsLocation, patchPayload.meta.dns_provider_credentials, { mode: 0o600 });
+		}
+
+		// Validate: renew the certificate to prove the new credentials work
+		if (data.validate && isLetsEncryptDns) {
+			try {
+				await internalCertificate.renew(access, { id: row.id });
+				// Re-fetch to get updated expires_on
+				savedRow = await certificateModel
+					.query()
+					.where("id", row.id)
+					.first()
+					.then(utils.omitRow(omissions()));
+			} catch (renewErr) {
+				// Rollback: restore old meta in DB and credentials file
+				if (oldMeta) {
+					await certificateModel.query().patchAndFetchById(row.id, { meta: oldMeta });
+					if (oldMeta.dns_provider_credentials) {
+						fs.writeFileSync(credentialsLocation, oldMeta.dns_provider_credentials, { mode: 0o600 });
+					}
+				}
+				throw renewErr;
+			}
+		}
+
+		// Batch replace: update all other certs sharing the same old credentials
+		if (data.batch_replace && isLetsEncryptDns && oldMeta) {
+			const batchResults = await internalCertificate.batchReplaceCredentials(
+				oldMeta.dns_provider_credentials,
+				row.id,
+				patchPayload.meta,
+			);
+			savedRow.batch_results = batchResults;
 		}
 
 		savedRow.meta = internalCertificate.cleanMeta(savedRow.meta);
@@ -306,6 +349,90 @@ const internalCertificate = {
 		});
 
 		return savedRow;
+	},
+
+	/**
+	 * Count other LE DNS certificates sharing the same credentials as the given certificate.
+	 * @param  {Access}  access
+	 * @param  {Object}  data
+	 * @param  {Number}  data.id
+	 * @return {Promise}
+	 */
+	getBatchCount: async (access, data) => {
+		await access.can("certificates:get", data.id);
+
+		const rawRow = await certificateModel.query()
+			.where("id", data.id)
+			.andWhere("is_deleted", 0)
+			.first();
+
+		if (!rawRow || rawRow.provider !== "letsencrypt" || !rawRow.meta?.dns_challenge) {
+			return { count: 0 };
+		}
+
+		const oldCreds = rawRow.meta?.dns_provider_credentials;
+		if (!oldCreds) return { count: 0 };
+
+		const count = await certificateModel.query()
+			.where("is_deleted", 0)
+			.andWhere("provider", "letsencrypt")
+			.andWhere("id", "!=", data.id)
+			.whereRaw("json_extract(meta, '$.dns_challenge') = ?", [true])
+			.whereRaw("json_extract(meta, '$.dns_provider_credentials') = ?", [oldCreds])
+			.resultSize();
+
+		return { count };
+	},
+
+	/**
+	 * Update all other LE DNS certificates that share the same old credentials.
+	 * @param  {String}  oldCredentials  The old credentials value to match
+	 * @param  {Number}  currentId       The certificate being edited (excluded from batch)
+	 * @param  {Object}  newMeta         The new meta fields to apply
+	 * @return {Promise}
+	 */
+	batchReplaceCredentials: async (oldCredentials, currentId, newMeta) => {
+		if (!oldCredentials) return { updated: [], errors: [] };
+
+		const matchingCerts = await certificateModel.query()
+			.where("is_deleted", 0)
+			.andWhere("provider", "letsencrypt")
+			.andWhere("id", "!=", currentId)
+			.whereRaw("json_extract(meta, '$.dns_challenge') = ?", [true])
+			.whereRaw("json_extract(meta, '$.dns_provider_credentials') = ?", [oldCredentials]);
+
+		const updated = [];
+		const errors = [];
+
+		for (const cert of matchingCerts) {
+			try {
+				const mergedMeta = { ...cert.meta };
+				if (newMeta.dns_provider !== undefined) {
+					mergedMeta.dns_provider = newMeta.dns_provider;
+				}
+				if (newMeta.dns_provider_credentials !== undefined) {
+					mergedMeta.dns_provider_credentials = newMeta.dns_provider_credentials;
+				}
+				if (newMeta.propagation_seconds !== undefined) {
+					mergedMeta.propagation_seconds = newMeta.propagation_seconds;
+				}
+
+				await certificateModel.query().patchAndFetchById(cert.id, { meta: mergedMeta });
+
+				// Sync credentials file
+				if (newMeta.dns_provider_credentials) {
+					const credLoc = `/etc/letsencrypt/credentials/credentials-${cert.id}`;
+					fs.mkdirSync("/etc/letsencrypt/credentials", { recursive: true });
+					fs.writeFileSync(credLoc, newMeta.dns_provider_credentials, { mode: 0o600 });
+				}
+
+				updated.push(cert.id);
+			} catch (err) {
+				errors.push({ id: cert.id, message: err.message });
+			}
+		}
+
+		return { updated, errors };
 	},
 
 	/**

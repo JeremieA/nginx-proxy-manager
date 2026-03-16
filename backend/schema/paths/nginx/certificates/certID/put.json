@@ -46,6 +46,12 @@
 									"minimum": 0
 								}
 							}
+						},
+						"validate": {
+							"type": "boolean"
+						},
+						"batch_replace": {
+							"type": "boolean"
 						}
 					}
 				}
