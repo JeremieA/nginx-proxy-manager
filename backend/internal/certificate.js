@@ -352,6 +352,34 @@ const internalCertificate = {
 	},
 
 	/**
+	 * Normalize a credentials string by collapsing all whitespace,
+	 * so that copy-paste differences (extra spaces, tabs, newlines) don't
+	 * prevent batch matching.
+	 */
+	normalizeCredentials: (creds) => {
+		return (creds || "").replace(/\s+/g, " ").trim();
+	},
+
+	/**
+	 * Find all other LE DNS certificates whose credentials match the given
+	 * value after whitespace normalization.
+	 */
+	findCertsWithMatchingCredentials: async (oldCredentials, excludeId) => {
+		const normalized = internalCertificate.normalizeCredentials(oldCredentials);
+		if (!normalized) return [];
+
+		const candidates = await certificateModel.query()
+			.where("is_deleted", 0)
+			.andWhere("provider", "letsencrypt")
+			.andWhere("id", "!=", excludeId)
+			.whereRaw("json_extract(meta, '$.dns_challenge') = ?", [true]);
+
+		return candidates.filter((cert) =>
+			internalCertificate.normalizeCredentials(cert.meta?.dns_provider_credentials) === normalized,
+		);
+	},
+
+	/**
 	 * Count other LE DNS certificates sharing the same credentials as the given certificate.
 	 * @param  {Access}  access
 	 * @param  {Object}  data
@@ -373,15 +401,8 @@ const internalCertificate = {
 		const oldCreds = rawRow.meta?.dns_provider_credentials;
 		if (!oldCreds) return { count: 0 };
 
-		const count = await certificateModel.query()
-			.where("is_deleted", 0)
-			.andWhere("provider", "letsencrypt")
-			.andWhere("id", "!=", data.id)
-			.whereRaw("json_extract(meta, '$.dns_challenge') = ?", [true])
-			.whereRaw("json_extract(meta, '$.dns_provider_credentials') = ?", [oldCreds])
-			.resultSize();
-
-		return { count };
+		const matching = await internalCertificate.findCertsWithMatchingCredentials(oldCreds, data.id);
+		return { count: matching.length };
 	},
 
 	/**
@@ -394,12 +415,7 @@ const internalCertificate = {
 	batchReplaceCredentials: async (oldCredentials, currentId, newMeta) => {
 		if (!oldCredentials) return { updated: [], errors: [] };
 
-		const matchingCerts = await certificateModel.query()
-			.where("is_deleted", 0)
-			.andWhere("provider", "letsencrypt")
-			.andWhere("id", "!=", currentId)
-			.whereRaw("json_extract(meta, '$.dns_challenge') = ?", [true])
-			.whereRaw("json_extract(meta, '$.dns_provider_credentials') = ?", [oldCredentials]);
+		const matchingCerts = await internalCertificate.findCertsWithMatchingCredentials(oldCredentials, currentId);
 
 		const updated = [];
 		const errors = [];
